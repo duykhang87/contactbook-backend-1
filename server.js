@@ -5,7 +5,7 @@ const config = require("./app/config");
 const app = express();
 
 var corsOptions = {
-    origin:"http://localhost:8081",
+    origin:"http://localhost:8080",
 };
 
 app.use(cors(corsOptions));
@@ -21,8 +21,12 @@ app.get("/",(req, res) => {
     res.json( { message: "welcome to contact book application"});
 });
 
+setupContactRoutes(app);
+
 //set port, listen for requests
 const PORT = config.app.port;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
+
+
 });
